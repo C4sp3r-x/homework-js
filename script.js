@@ -111,3 +111,5 @@ function MathOperation(a, b, operation) {
             return null;
     }
 }
+
+console.log(typeof 0);
