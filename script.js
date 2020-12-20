@@ -1,156 +1,49 @@
 'use strict';
-var a = 1,
-    b = 1,
-    c, d;
-c = ++a;
-alert(c); // результат 2, т.к. это инкремент, увеличение на 1
-d = b++;
-alert(d); // результат 1, т.к. это постфиксная запись инкремента, прибавляет 1,но возвращает старое значение, до выполнения новых операций
-c = (2 + ++a);
-alert(c); // результат 5, т.к. в первом примере результат 2, прибавляем 2 и увеличиваем еще на один
-d = (2 + b++);
-alert(d); // результат 4, т.к.  во втором примере 1, прибавляем 2  и т.к. новая операция он увеличивает еще на один
-alert(a); // результат 3, т. к. до это в операциях икремента 2 раза прибавили по 1 
-alert(b); // результат 3, т. к. до это в операциях икремента 2 раза прибавили по 1
 
-/* var a = 2;
-var x = 1 + (a *= 2);
-console.log(x); */ // результат 5, т.к. 2 умножается на 2 и прибавляется 1.
 
-/* let a = -10;
-let b = 5;
-if (a > 0 && b > 0) {
-    z = a - b;
-} else if (a < 0 && b < 0) {
-    z = a * b;
-} else if (a > 0 && b < 0 || a < 0 && b > 0) {
-    z = a + b;
+const integer = {
+    number: Math.ceil(Math.random() * 999),
+    units: 0,
+    tens: 0,
+    hundreds: 0,
+};
+if (integer.number <= 999) {
+    integer.units = Math.floor(integer.number % 10);
+    integer.tens = Math.floor(integer.number / 10 % 10);
+    integer.hundreds = Math.floor(integer.number / 100 % 10);
+} else {
+    console.log('Вы ввели число за диапазоном 0 - 999');
 }
-console.log(z); */
+console.log(integer);
 
-/* let x = 17;
-switch (x) {
-    case 1:
-        console.log('Ваше число 1');
-        break;
-    case 2:
-        console.log('Ваше число 2');
-        break;
-    case 3:
-        console.log('Ваше число 3');
-        break;
-    case 4:
-        console.log('Ваше число 4');
-        break;
-    case 5:
-        console.log('Ваше число 5');
-        break;
-    case 6:
-        console.log('Ваше число 6');
-        break;
-    case 7:
-        console.log('Ваше число 7');
-        break;
-    case 8:
-        console.log('Ваше число 8');
-        break;
-    case 9:
-        console.log('Ваше число 9');
-        break;
-    case 10:
-        console.log('Ваше число 10');
-        break;
-    case 11:
-        console.log('Ваше число 11');
-        break;
-    case 12:
-        console.log('Ваше число 12');
-        break;
-    case 13:
-        console.log('Ваше число 13');
-        break;
-    case 14:
-        console.log('Ваше число 14');
-        break;
-    case 15:
-        console.log('Ваше число 15');
-        break;
-    default:
-        console.log('Введите число от 1 дл 15');
-        break;
-}
-
-
-function plus(a, b) {
-    return a + b;
-}
-
-function sub(a, b) {
-    return a - b;
-}
-
-function multi(a, b) {
-    return a * b;
-}
-
-function div(a, b) {
-    return a / b;
-}
-
-function MathOperation(a, b, operation) {
-    switch (operation) {
-        case plus:
-            return a + b;
-        case sub:
-            return a - b;
-        case multi:
-            return a * b;
-        case div:
-            return a / b;
-        default:
-            return null;
-    }
-}
- */
-
-/* HOMEWORK 3 JS1
-
-let n = 2;
-while (n <= 100) {
-    let prime = true;
-    for (let i = 2; i < n; i++) {
-        if (n % i === 0) {
-            prime = false; // проверка простое или составное
-            break;
-        }
-    }
-    if (prime) console.log(n);
-    n++;
-}
 
 
 
 let basket = [{
         product: "hat",
-        price: 50
+        price: 50,
+        quantity: 1
     },
     {
         product: "sweather",
-        price: 100
+        price: 100,
+        quantity: 2
     },
     {
         product: "hoody",
-        price: 20
+        price: 300,
+        quantity: 3
     },
     {
         product: "t-shirt",
-        price: 10
+        price: 1000,
+        quantity: 3
     }
 ];
 let basketPrice = 0;
 for (let prod of basket) {
-    basketPrice += prod.price;
-    console.log(prod.product + ' стоит: ' + prod.price);
+    basketPrice += prod.price * prod.quantity;
+    console.log(prod.product + ' стоит: ' + prod.price * prod.quantity);
 }
 
 console.log('Всего ' + basketPrice);
@@ -159,7 +52,7 @@ console.log('Всего ' + basketPrice);
 function countBasketPrice(basket) {
     let allBasketPrice = 0;
     for (let prod of basket) {
-        allBasketPrice += prod.price;
+        allBasketPrice += prod.price * prod.quantity;
     }
     return allBasketPrice;
 }
@@ -168,5 +61,33 @@ console.log("Стоимость корзины: " + countBasketPrice(basket));
 
 
 
-for (let x = 0; x <= 9; x++)
-    console.log(x); */
+/* const basket = {
+    products: [{
+            title: 'hat',
+            price: 1000,
+            quantity: 2,
+        },
+        {
+            title: 'sweather',
+            price: 3000,
+            quantity: 4,
+        },
+        {
+            title: 'socks',
+            price: 500,
+            quantity: 7,
+        }
+    ],
+
+    totalPrice() {
+        return this.products.reduce((sum, good) => {
+            return sum + good.price * good.quantity;
+        }, 0)
+    },
+
+    goodsCount() {
+        return this.products.length;
+    }
+};
+
+console.log(basket); */
