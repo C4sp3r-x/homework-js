@@ -113,7 +113,7 @@ function MathOperation(a, b, operation) {
 }
  */
 
-HOMEWORK 3 JS1
+/* HOMEWORK 3 JS1
 
 let n = 2;
 while (n <= 100) {
@@ -169,4 +169,4 @@ console.log("Стоимость корзины: " + countBasketPrice(basket));
 
 
 for (let x = 0; x <= 9; x++)
-    console.log(x);
+    console.log(x); */
