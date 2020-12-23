@@ -1,4 +1,4 @@
-'use string';
+'use strict';
 var a = 1,
     b = 1,
     c, d;
@@ -13,11 +13,11 @@ alert(d); // результат 4, т.к.  во втором примере 1, �
 alert(a); // результат 3, т. к. до это в операциях икремента 2 раза прибавили по 1 
 alert(b); // результат 3, т. к. до это в операциях икремента 2 раза прибавили по 1
 
-var a = 2;
+/* var a = 2;
 var x = 1 + (a *= 2);
-console.log(x); // результат 5, т.к. 2 умножается на 2 и прибавляется 1.
+console.log(x); */ // результат 5, т.к. 2 умножается на 2 и прибавляется 1.
 
-let a = -10;
+/* let a = -10;
 let b = 5;
 if (a > 0 && b > 0) {
     z = a - b;
@@ -26,9 +26,9 @@ if (a > 0 && b > 0) {
 } else if (a > 0 && b < 0 || a < 0 && b > 0) {
     z = a + b;
 }
-console.log(z);
+console.log(z); */
 
-let x = 17;
+/* let x = 17;
 switch (x) {
     case 1:
         console.log('Ваше число 1');
@@ -111,3 +111,62 @@ function MathOperation(a, b, operation) {
             return null;
     }
 }
+ */
+
+HOMEWORK 3 JS1
+
+let n = 2;
+while (n <= 100) {
+    let prime = true;
+    for (let i = 2; i < n; i++) {
+        if (n % i === 0) {
+            prime = false; // проверка простое или составное
+            break;
+        }
+    }
+    if (prime) console.log(n);
+    n++;
+}
+
+
+
+let basket = [{
+        product: "hat",
+        price: 50
+    },
+    {
+        product: "sweather",
+        price: 100
+    },
+    {
+        product: "hoody",
+        price: 20
+    },
+    {
+        product: "t-shirt",
+        price: 10
+    }
+];
+let basketPrice = 0;
+for (let prod of basket) {
+    basketPrice += prod.price;
+    console.log(prod.product + ' стоит: ' + prod.price);
+}
+
+console.log('Всего ' + basketPrice);
+
+
+function countBasketPrice(basket) {
+    let allBasketPrice = 0;
+    for (let prod of basket) {
+        allBasketPrice += prod.price;
+    }
+    return allBasketPrice;
+}
+
+console.log("Стоимость корзины: " + countBasketPrice(basket));
+
+
+
+for (let x = 0; x <= 9; x++)
+    console.log(x);
