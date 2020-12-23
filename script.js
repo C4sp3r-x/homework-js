@@ -1,7 +1,7 @@
 'use strict';
 
 
-const integer = {
+/* const integer = {
     number: Math.ceil(Math.random() * 999),
     units: 0,
     tens: 0,
@@ -57,37 +57,56 @@ function countBasketPrice(basket) {
     return allBasketPrice;
 }
 
-console.log("Стоимость корзины: " + countBasketPrice(basket));
+console.log("Стоимость корзины: " + countBasketPrice(basket)); */
+
+function chessBoard() {
+
+    const col = document.createElement('tr');
+    const row = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
+    let turn = true;
+
+    for (let i = 0; i < 8; i++) {
+        let tr = document.createElement('tr');
 
 
+        let tdd = document.createElement('td');
+        tdd.innerHTML = 8 - i;
+        tr.appendChild(tdd);
 
-/* const basket = {
-    products: [{
-            title: 'hat',
-            price: 1000,
-            quantity: 2,
-        },
-        {
-            title: 'sweather',
-            price: 3000,
-            quantity: 4,
-        },
-        {
-            title: 'socks',
-            price: 500,
-            quantity: 7,
+        for (let j = 0; j < 8; j++) {
+
+            if (j === 0)
+                turn = !turn;
+
+            let td = document.createElement('td');
+
+            if (turn) {
+                td.style.background = 'black';
+            } else
+                td.style.background = 'white';
+
+            tr.appendChild(td);
+            turn = !turn;
         }
-    ],
-
-    totalPrice() {
-        return this.products.reduce((sum, good) => {
-            return sum + good.price * good.quantity;
-        }, 0)
-    },
-
-    goodsCount() {
-        return this.products.length;
+        table.appendChild(tr);
     }
-};
 
-console.log(basket); */
+
+    for (let k = 0; k < 9; k++) {
+
+        let td = document.createElement('td');
+        td.style.width = '50px';
+        td.style.height = '50px';
+        td.style.background = 'white';
+        td.innerHTML = row[k];
+
+        col.appendChild(td);
+
+    }
+    table.appendChild(col);
+
+    document.body.appendChild(table);
+}
+
+chessBoard();
