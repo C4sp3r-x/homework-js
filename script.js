@@ -1,63 +1,73 @@
 'use strict';
 
+const cartItem = {
+    render(products) {
+        return `<div class="products">
+                    <div><b>Наименование</b>: ${products.product}</div>
+                    <div><b>Цена за шт.</b>: ${products.price}</div>
+                    <div><b>Количество</b>: ${products.quantity}</div>
+                    <div><b>Стоимость</b>: ${products.quantity * products.price}</div>
+                </div>`;
+    }
+}
 
-/* const integer = {
-    number: Math.ceil(Math.random() * 999),
-    units: 0,
-    tens: 0,
-    hundreds: 0,
+const basket = {
+    cartListBlock: null,
+    basketButton: null,
+    cartItem,
+    allBasket: [{
+            product: 'hat',
+            price: 50,
+            quantity: 1
+        },
+        {
+            product: 'sweather',
+            price: 100,
+            quantity: 2
+        },
+        {
+            product: 'hoody',
+            price: 300,
+            quantity: 3
+        },
+        {
+            product: 't-shirt',
+            price: 1000,
+            quantity: 3
+        }
+    ],
+
+    init() {
+        this.cartListBlock = document.querySelector('.basket-list');
+        this.basketButton = document.querySelector('.basket-btn');
+        this.basketButton.addEventListener('click', this.clearCart.bind(this));
+
+        this.render();
+    },
+
+    render() {
+        if (this.allBasket.length) {
+            this.allBasket.forEach(good => {
+                this.cartListBlock.insertAdjacentHTML('beforeend', this.cartItem.render(good));
+            });
+            this.cartListBlock.insertAdjacentHTML('beforeend', `В корзине ${this.allBasket.length} позиций(а) стоимостью ${this.getCartPrice()}`);
+        } else {
+            this.cartListBlock.textContent = 'Корзина пуста';
+        }
+    },
+    getCartPrice() {
+        return this.allBasket.reduce(function(price, good) {
+            return price + good.price * good.quantity;
+        }, 0);
+    },
+    clearCart() {
+        this.allBasket = [];
+        this.render();
+    },
 };
-if (integer.number <= 999) {
-    integer.units = Math.floor(integer.number % 10);
-    integer.tens = Math.floor(integer.number / 10 % 10);
-    integer.hundreds = Math.floor(integer.number / 100 % 10);
-} else {
-    console.log('Вы ввели число за диапазоном 0 - 999');
-}
-console.log(integer);
 
+basket.init();
 
-
-
-let basket = [{
-        product: "hat",
-        price: 50,
-        quantity: 1
-    },
-    {
-        product: "sweather",
-        price: 100,
-        quantity: 2
-    },
-    {
-        product: "hoody",
-        price: 300,
-        quantity: 3
-    },
-    {
-        product: "t-shirt",
-        price: 1000,
-        quantity: 3
-    }
-];
-let basketPrice = 0;
-for (let prod of basket) {
-    basketPrice += prod.price * prod.quantity;
-    console.log(prod.product + ' стоит: ' + prod.price * prod.quantity);
-}
-
-console.log('Всего ' + basketPrice);
-
-
-function countBasketPrice(basket) {
-    let allBasketPrice = 0;
-    for (let prod of basket) {
-        allBasketPrice += prod.price * prod.quantity;
-    }
-    return allBasketPrice;
-}
-
-console.log("Стоимость корзины: " + countBasketPrice(basket)); */
 
 function chessBoard() {
 
@@ -107,6 +117,8 @@ function chessBoard() {
     table.appendChild(col);
 
     document.body.appendChild(table);
+
+
 }
 
 chessBoard();
